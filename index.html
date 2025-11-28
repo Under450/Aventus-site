@@ -51,7 +51,6 @@
     }
 
     /* NAVBAR */
-
     .navbar {
       position: sticky;
       top: 0;
@@ -64,13 +63,15 @@
       );
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(31, 41, 51, 0.7);
+      height: 60px; /* fixed, smaller bar */
     }
 
     .navbar-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0rem 1.2rem; /* reduced height */
+      height: 100%;
+      padding: 0 1.2rem; /* side padding only */
     }
 
     .logo {
@@ -80,8 +81,8 @@
     }
 
     .logo-img {
-      width: 225px;
-      height: auto;
+      max-height: 40px;  /* clamp logo inside bar */
+      width: auto;
       display: block;
     }
 
@@ -114,22 +115,22 @@
     }
 
     .nav-cta {
-      padding: 0.35rem 1.2rem;
+      padding: 0.2rem 1.0rem;
       border-radius: var(--radius-pill);
       background: radial-gradient(circle at top, #ff6b4a, var(--accent));
       color: #fff;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       border: none;
       cursor: pointer;
       box-shadow: 0 0 0 1px rgba(255, 59, 45, 0.2),
-        0 14px 30px rgba(255, 59, 45, 0.4);
+        0 10px 20px rgba(255, 59, 45, 0.35);
       transition: transform var(--transition), box-shadow var(--transition);
     }
 
     .nav-cta:hover {
       transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(255, 59, 45, 0.45);
+      box-shadow: 0 14px 30px rgba(255, 59, 45, 0.4);
     }
 
     @media (max-width: 768px) {
@@ -619,7 +620,6 @@
       line-height: 1.6;
     }
 
-    /* orange numbers for partnership points */
     .partner-number {
       width: 26px;
       height: 26px;
@@ -778,7 +778,7 @@
       width: 100%;
     }
 
-    /* Legal/info content (used inside modals) */
+    /* Legal/info content (modals) */
 
     .legal-content {
       font-size: 0.88rem;
@@ -1249,10 +1249,11 @@
         </div>
       </section>
 
-      <!-- 6. PARTNER WITH AVENTUS (CREATORS + REFERRAL BELOW BOXES) -->
+      <!-- 6. PARTNER WITH AVENTUS -->
       <section id="partners">
         <div class="container">
           <div class="section-header">
+            <div class="section-kicker">Partners</div>
             <h2 class="section-title">Partner with Aventus</h2>
             <p class="section-subtitle">
               Whether you’re a creator or a connector, Aventus is built to reward long-term, high-performance partnerships.
@@ -1292,7 +1293,6 @@
               </article>
             </div>
 
-            <!-- Referral Partner Program under the three boxes -->
             <div class="referral-block">
               <div class="referral-tag">Referral Partner Program</div>
               <p class="section-subtitle" style="max-width:none;margin-bottom:0.3rem;">
@@ -1357,6 +1357,7 @@
       <section id="apply">
         <div class="container">
           <div class="section-header">
+            <div class="section-kicker">Book Consultation</div>
             <h2 class="section-title">Ready to Transform Your Career?</h2>
             <p class="section-subtitle">
               Take the next step now — apply for management, book a consultation, or connect with us instantly.
