@@ -368,7 +368,7 @@
       color: var(--muted);
     }
 
-    /* All-in-one Solution cards & shared card styles */
+    /* Shared card styles */
 
     .cards-row {
       display: grid;
@@ -626,12 +626,26 @@
       opacity: 0.8;
     }
 
-    /* Partner with Aventus (benefits) */
+    /* Partner with Aventus */
+
+    .partner-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2rem;
+      margin-top: 1.8rem;
+    }
+
+    @media (max-width: 900px) {
+      .partner-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
 
     .partner-benefits {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.5rem;
+      margin-top: 1.5rem;
     }
 
     @media (max-width: 900px) {
@@ -660,36 +674,115 @@
       line-height: 1.6;
     }
 
-    /* Testimonials */
+    .referral-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.25rem 0.9rem;
+      border-radius: var(--radius-pill);
+      background: rgba(76, 29, 149, 0.4);
+      border: 1px solid rgba(168, 85, 247, 0.65);
+      font-size: 0.78rem;
+      color: #e5e7eb;
+      margin-bottom: 0.9rem;
+    }
 
-    .testimonials-row {
+    .referral-benefits {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.4rem;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
+      margin-top: 1.1rem;
     }
 
-    @media (max-width: 900px) {
-      .testimonials-row {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .testimonial-card {
+    .referral-benefit {
       background: radial-gradient(circle at top left, #111827, #020617);
       border-radius: var(--radius-lg);
       border: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 1.5rem 1.6rem 1.3rem;
+      padding: 1rem 1.2rem 0.9rem;
       box-shadow: var(--shadow-soft);
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
-    .testimonial-author {
-      margin-top: 1.1rem;
+    .referral-benefit-number {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.8rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .referral-benefit h4 {
+      margin: 0 0 0.2rem;
+      font-size: 0.95rem;
+      color: #e5e7eb;
+    }
+
+    .referral-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.3rem;
+    }
+
+    /* FAQ */
+
+    .faq-grid {
+      max-width: 780px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1rem;
+    }
+
+    details.faq-item {
+      background: radial-gradient(circle at top left, #111827, #020617);
+      border-radius: 16px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 0.9rem 1.1rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    details.faq-item[open] {
+      border-color: var(--accent);
+    }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      position: relative;
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      top: 0;
       font-weight: 600;
       color: var(--accent);
-      font-size: 0.9rem;
+    }
+
+    .faq-item[open] summary::after {
+      content: "−";
+    }
+
+    .faq-item p {
+      margin: 0.7rem 0 0.2rem;
+      color: var(--muted);
+      line-height: 1.6;
     }
 
     /* CTA forms */
@@ -756,83 +849,6 @@
       width: 100%;
     }
 
-    /* Referral partner section */
-
-    .referral-band {
-      background: radial-gradient(circle at top, #111827, #020617 55%, #050814 100%);
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
-    }
-
-    .referral-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.25rem 0.9rem;
-      border-radius: var(--radius-pill);
-      background: rgba(76, 29, 149, 0.4);
-      border: 1px solid rgba(168, 85, 247, 0.65);
-      font-size: 0.78rem;
-      color: #e5e7eb;
-      margin-bottom: 1.2rem;
-    }
-
-    .referral-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 1.5rem;
-    }
-
-    .referral-benefits {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.2rem;
-      margin-top: 1.8rem;
-    }
-
-    @media (max-width: 900px) {
-      .referral-benefits {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .referral-benefit {
-      background: radial-gradient(circle at top left, #111827, #020617);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 1.3rem 1.4rem 1.1rem;
-      box-shadow: var(--shadow-soft);
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .referral-benefit-number {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 0.84rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .referral-benefit h4 {
-      margin: 0 0 0.3rem;
-      font-size: 0.98rem;
-      color: #e5e7eb;
-    }
-
-    .referral-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      margin-top: 1.8rem;
-    }
-
     /* Footer */
 
     footer {
@@ -887,7 +903,7 @@
     </header>
 
     <main id="top">
-      <!-- HERO -->
+      <!-- 1. UNLOCK YOUR POTENTIAL (HERO) -->
       <section class="hero">
         <div class="container hero-inner">
           <div>
@@ -905,7 +921,7 @@
             <div class="hero-actions">
               <a href="#apply" class="btn-primary">Apply for Partnership</a>
               <a href="#apply" class="btn-secondary">Book Consultation</a>
-              <a href="#referral" class="btn-ghost">Referral Scheme</a>
+              <a href="#partners" class="btn-ghost">Referral Scheme</a>
             </div>
             <div class="hero-badges">
               <div class="hero-badge">
@@ -935,7 +951,7 @@
         </div>
       </section>
 
-      <!-- OVERVIEW: ARE YOU MAXIMIZING -->
+      <!-- 2. ARE YOU MAXIMIZING YOUR EARNING POTENTIAL? -->
       <section id="overview">
         <div class="container">
           <div class="section-header">
@@ -987,7 +1003,7 @@
         </div>
       </section>
 
-      <!-- ALL-IN-ONE SOLUTION (Services) -->
+      <!-- 3. YOUR ALL-IN-ONE SOLUTION (SERVICES) -->
       <section id="services">
         <div class="container">
           <div class="section-header">
@@ -1047,7 +1063,7 @@
         </div>
       </section>
 
-      <!-- RESULTS -->
+      <!-- 4. REAL RESULTS, REAL GROWTH -->
       <section id="results">
         <div class="container">
           <div class="section-header">
@@ -1104,44 +1120,7 @@
         </div>
       </section>
 
-      <!-- PARTNER WITH AVENTUS (CREATORS) -->
-      <section id="partners">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Partner With Aventus</h2>
-            <p class="section-subtitle">
-              Join a high-performance agency built on integrity, transparency,
-              and creator success.
-            </p>
-          </div>
-
-          <div class="partner-benefits">
-            <article class="partner-card">
-              <h3>Premium Payouts</h3>
-              <p>
-                Earn more with structured funnels, upselling, and refined
-                pricing systems.
-              </p>
-            </article>
-            <article class="partner-card">
-              <h3>Full Transparency</h3>
-              <p>
-                Track your numbers, growth, and revenue with clear, honest
-                reporting.
-              </p>
-            </article>
-            <article class="partner-card">
-              <h3>Long-Term Growth</h3>
-              <p>
-                Our focus isn’t quick wins — it’s consistent, compounding
-                success.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- PROCESS -->
+      <!-- 5. YOUR PATH TO SUCCESS -->
       <section id="process" class="process-band">
         <div class="container">
           <div class="section-header">
@@ -1192,46 +1171,133 @@
         </div>
       </section>
 
-      <!-- TESTIMONIALS -->
-      <section id="testimonials">
+      <!-- 6. PARTNER WITH AVENTUS (CREATORS + REFERRAL) -->
+      <section id="partners">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">What Our Creators Say</h2>
+            <h2 class="section-title">Partner with Aventus</h2>
             <p class="section-subtitle">
-              Real feedback from creators who trusted Aventus to scale their
-              business.
+              Whether you’re a creator or a connector, Aventus is built to reward long-term, high-performance partnerships.
             </p>
           </div>
 
-          <div class="testimonials-row">
-            <article class="testimonial-card">
-              "Aventus completely changed my business. I went from inconsistent
-              earnings to stable, predictable growth every month."
-              <div class="testimonial-author">— Sophia</div>
-            </article>
+          <div class="partner-layout">
+            <!-- Creator partnership -->
+            <div>
+              <h3 style="margin:0 0 0.6rem;font-size:1.15rem;">Creator Management Partnership</h3>
+              <p class="section-subtitle" style="margin:0 0 0.4rem;max-width:none;">
+                Join a high-performance agency focused on integrity, transparency, and creator success.
+              </p>
+              <div class="partner-benefits">
+                <article class="partner-card">
+                  <h3>Premium Payouts</h3>
+                  <p>
+                    Earn more with structured funnels, upselling, and refined
+                    pricing systems.
+                  </p>
+                </article>
+                <article class="partner-card">
+                  <h3>Full Transparency</h3>
+                  <p>
+                    Track your numbers, growth, and revenue with clear, honest
+                    reporting.
+                  </p>
+                </article>
+                <article class="partner-card">
+                  <h3>Long-Term Growth</h3>
+                  <p>
+                    Our focus isn’t quick wins — it’s consistent, compounding
+                    success.
+                  </p>
+                </article>
+              </div>
+            </div>
 
-            <article class="testimonial-card">
-              "I finally got my life back. No more 12-hour chat shifts. Their
-              team handles everything and I can just create."
-              <div class="testimonial-author">— Maya</div>
-            </article>
-
-            <article class="testimonial-card">
-              "Their marketing and upselling systems are elite. I earn more now
-              with LESS stress."
-              <div class="testimonial-author">— Ava</div>
-            </article>
+            <!-- Referral partnership -->
+            <div>
+              <div class="referral-tag">Referral Partner Program</div>
+              <p class="section-subtitle" style="max-width:none;margin-bottom:0.3rem;">
+                Know serious earners? Refer them to Aventus and get paid at a level that matches the value you deliver.
+              </p>
+              <div class="referral-benefits">
+                <div class="referral-benefit">
+                  <div class="referral-benefit-number">1</div>
+                  <h4>Premium Payouts</h4>
+                  Competitive commission structures that beat industry standards.
+                </div>
+                <div class="referral-benefit">
+                  <div class="referral-benefit-number">2</div>
+                  <h4>Transparent Tracking</h4>
+                  Clear reporting on your referrals’ performance and your earnings.
+                </div>
+                <div class="referral-benefit">
+                  <div class="referral-benefit-number">3</div>
+                  <h4>Long-Term Value</h4>
+                  Our retention rate means your passive income stream lasts longer.
+                </div>
+              </div>
+              <div class="referral-actions">
+                <a href="#apply" class="btn-primary">Join Referral Program</a>
+                <a href="#apply" class="btn-secondary">Book Partner Call</a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- APPLY / CTA -->
+      <!-- 7. FREQUENTLY ASKED QUESTIONS -->
+      <section id="faq">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">
+              Straight answers to the questions creators ask us most before partnering with Aventus.
+            </p>
+          </div>
+
+          <div class="faq-grid">
+            <details class="faq-item" open>
+              <summary>What type of creators do you work with?</summary>
+              <p>
+                We partner with committed creators who treat their page like a business and are ready to scale.
+                If you already have an active fanbase and are serious about growth, you’re likely a good fit.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>How are earnings and payouts handled?</summary>
+              <p>
+                You keep ownership and control of your account. We operate under a clear revenue split, with
+                transparent reporting so you can see exactly what you earned and what we generated for you.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Will I lose control of my brand or content?</summary>
+              <p>
+                No. You stay in charge of your brand, boundaries, and content. We handle the operations, strategy,
+                and fan management to maximise results around the content you’re comfortable creating.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>What does the onboarding process look like?</summary>
+              <p>
+                After your application is accepted, we hold a strategy call, agree targets and structure, then
+                move into account setup, security checks, chat scripting, pricing, and funnel optimisation.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. READY TO TRANSFORM YOUR CAREER? (FINAL CTA) -->
       <section id="apply">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">Ready to Start Your Growth Journey?</h2>
+            <h2 class="section-title">Ready to Transform Your Career?</h2>
             <p class="section-subtitle">
-              Apply now, book a consultation, or reach out via WhatsApp.
+              Take the next step now — apply for management, book a consultation, or connect with us instantly.
             </p>
           </div>
 
@@ -1284,55 +1350,6 @@
                 Instant replies. Ask questions, learn more, or begin onboarding.
               </p>
               <button class="btn-primary" type="button">Start Chat</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- REFERRAL PARTNER -->
-      <section id="referral" class="referral-band">
-        <div class="container">
-          <div class="section-header">
-            <div class="referral-tag">Referral Partner Program</div>
-            <h2 class="section-title">Partner with Aventus</h2>
-            <p class="section-subtitle">
-              Aventus is the top-paying referral partner in the OnlyFans arena —
-              backed by our real payout data. We don’t race to the bottom; we
-              reward the people who drive growth.
-            </p>
-          </div>
-
-          <div class="referral-row">
-            <div>
-              <p class="section-subtitle" style="max-width: 680px">
-                If you know creators who are serious about earnings, send them
-                to Aventus and get paid at a level that matches the value you
-                deliver. Straightforward process. Premium payouts. A team that
-                moves quickly and treats referrals like partners.
-              </p>
-
-              <div class="referral-actions">
-                <a href="#apply" class="btn-primary">Join Referral Program</a>
-                <a href="#apply" class="btn-secondary">Book Partner Call</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="referral-benefits">
-            <div class="referral-benefit">
-              <div class="referral-benefit-number">1</div>
-              <h4>Premium Payouts</h4>
-              Competitive commission structures that beat industry standards.
-            </div>
-            <div class="referral-benefit">
-              <div class="referral-benefit-number">2</div>
-              <h4>Transparent Tracking</h4>
-              Clear reporting on your referrals’ performance and your earnings.
-            </div>
-            <div class="referral-benefit">
-              <div class="referral-benefit-number">3</div>
-              <h4>Long-term Value</h4>
-              Our retention rate means your passive income stream lasts longer.
             </div>
           </div>
         </div>
