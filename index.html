@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aventus Digital Media</title>
+  <style>
+    :root {
+      /* Replace these with your exact brand colors */
+      --bg: #050814;
+      --bg-alt: #0b1020;
+      --card: #101727;
+      --card-alt: #171a2b;
+      --accent: #ff3b2d;
+      --accent-soft: rgba(255, 59, 45, 0.16);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border-soft: #1f2933;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --transition: 200ms ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top left, #111827 0, var(--bg) 40%);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* NAVBAR */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 8, 20, 0.98),
+        rgba(5, 8, 20, 0.9),
+        transparent
+      );
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(31, 41, 51, 0.7);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    .logo-mark {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .logo-mark::before,
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .logo-mark::before {
+      top: 3px;
+      left: 3px;
+    }
+
+    .logo-mark::after {
+      bottom: 3px;
+      right: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--accent);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 0.55rem 1.5rem;
+      border-radius: var(--radius-pill);
+      background: radial-gradient(circle at top, #ff6b4a, var(--accent));
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 0 1px rgba(255, 59, 45, 0.2),
+        0 14px 30px rgba(255, 59, 45, 0.4);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(255, 59, 45, 0.45);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 4.25rem 0 4rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.85rem;
+      border-radius: var(--radius-pill);
+      background: rgba(31, 41, 55, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(255, 59, 45, 0.22);
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title span.accent {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-bottom: 2.25rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition),
+        background var(--transition), border-color var(--transition),
+        color var(--transition);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at top, #ff6b4a, var(--accent));
+      color: #fff;
+      box-shadow: 0 18px 35px rgba(255, 59, 45, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 45px rgba(255, 59, 45, 0.45);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(to bottom right, #111827, #020617);
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.6);
+    }
+
+    .btn-secondary:hover {
+      background: #020617;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.35);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(248, 250, 252, 0.02);
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hero-metric {
+      min-width: 120px;
+    }
+
+    .hero-metric strong {
+      display: block;
+      font-size: 1.35rem;
+      color: #fefefe;
+    }
+
+    /* Section generic */
+
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.4rem;
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-subtitle {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    /* All-in-one Solution cards */
+
+    .cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .cards-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #141b2f, var(--card));
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.8);
+      padding: 1.6rem 1.7rem 1.5rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .card-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.4rem 0 0;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    .card-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-list li::before {
+      content: "✓";
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-top: 0.08rem;
+    }
+
+    .card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Results section */
+
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-pill {
+      flex: 1 1 140px;
+      min-width: 0;
+      padding: 1.2rem 1.3rem;
+      border-radius: 20px;
+      background: radial-gradient(circle at top, #111827, #020617);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .stat-pill strong {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-pill span {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .charts-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .charts-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .chart-card {
+      background: linear-gradient(to bottom right, #111827, #020617);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 1.4rem 1.5rem 1.2rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.1rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .chart-title {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .chart-visual {
+      height: 150px;
+      border-radius: 12px;
+      background: radial-gradient(
+        circle at top,
+        rgba(248, 113, 113, 0.35),
+        rgba(15, 23, 42, 0.2)
+      );
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chart-line {
+      position: absolute;
+      left: 8%;
+      right: 4%;
+      top: 18%;
+      bottom: 12%;
+      border-radius: 8px;
+      background: linear-gradient(to top right, rgba(127, 29, 29, 0.2), transparent);
+      border-bottom: 2px solid rgba(248, 113, 113, 0.95);
+    }
+
+    .chart-bars {
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      bottom: 10%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.3rem;
+    }
+
+    .chart-bar {
+      flex: 1;
+      border-radius: 6px 6px 0 0;
+      background: linear-gradient(to top, rgba(248, 113, 113, 0.95), transparent);
+    }
+
+    .chart-bar:nth-child(1) {
+      height: 30%;
+    }
+    .chart-bar:nth-child(2) {
+      height: 45%;
+    }
+    .chart-bar:nth-child(3) {
+      height: 58%;
+    }
+    .chart-bar:nth-child(4) {
+      height: 75%;
+    }
+    .chart-bar:nth-child(5) {
+      height: 87%;
+    }
+    .chart-bar:nth-child(6) {
+      height: 100%;
+    }
+
+    /* Process timeline */
+
+    .process-band {
+      background: radial-gradient(circle at top, #020617, #020617 55%, #000 100%);
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1.5rem;
+      padding-bottom: 1rem;
+    }
+
+    @media (max-width: 1100px) {
+      .process-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .process-steps {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .step {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .step-number {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      margin: 0 auto 0.7rem;
+      background: var(--accent);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 12px 26px rgba(255, 59, 45, 0.6);
+    }
+
+    .step-title {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: #f9fafb;
+      font-size: 0.95rem;
+    }
+
+    .step-line {
+      width: 46px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin: 0.6rem auto 0;
+      opacity: 0.8;
+    }
+
+    /* Partner with Aventus (benefits) */
+
+    .partner-benefits {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .partner-benefits {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .partner-card {
+      background: radial-gradient(circle at top, #111827, #020617);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 1.5rem 1.7rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .partner-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    .partner-card p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Testimonials */
+
+    .testimonials-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    @media (max-width: 900px) {
+      .testimonials-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .testimonial-card {
+      background: radial-gradient(circle at top left, #111827, #020617);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 1.5rem 1.6rem 1.3rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .testimonial-author {
+      margin-top: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    /* CTA forms */
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .cta-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .cta-card {
+      background: radial-gradient(circle at top, #111827, #020617);
+      border-radius: 24px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 1.7rem 1.8rem 1.6rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .cta-card h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1.05rem;
+    }
+
+    .cta-card p {
+      margin: 0 0 1.2rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .field-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .field-input {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: #020617;
+      color: var(--text);
+      padding: 0.6rem 0.8rem;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .field-input::placeholder {
+      color: #4b5563;
+    }
+
+    .cta-card button {
+      width: 100%;
+    }
+
+    /* Referral partner section */
+
+    .referral-band {
+      background: radial-gradient(circle at top, #111827, #020617 55%, #050814 100%);
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .referral-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.25rem 0.9rem;
+      border-radius: var(--radius-pill);
+      background: rgba(76, 29, 149, 0.4);
+      border: 1px solid rgba(168, 85, 247, 0.65);
+      font-size: 0.78rem;
+      color: #e5e7eb;
+      margin-bottom: 1.2rem;
+    }
+
+    .referral-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+
+    .referral-benefits {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.8rem;
+    }
+
+    @media (max-width: 900px) {
+      .referral-benefits {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .referral-benefit {
+      background: radial-gradient(circle at top left, #111827, #020617);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 1.3rem 1.4rem 1.1rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .referral-benefit-number {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.84rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .referral-benefit h4 {
+      margin: 0 0 0.3rem;
+      font-size: 0.98rem;
+      color: #e5e7eb;
+    }
+
+    .referral-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.8rem;
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 1.8rem 0 2.1rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <a href="#top" class="logo">
+          <span class="logo-mark"></span>
+          <span>AVENTUS<br />DIGITAL&nbsp;MEDIA</span>
+        </a>
+        <nav class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#results">Results</a>
+          <a href="#partners">Partners</a>
+          <a href="#apply">Book Consultation</a>
+        </nav>
+        <a href="#apply" class="nav-cta">Apply Now</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container hero-inner">
+          <div>
+            <div class="hero-tag">
+              <span class="hero-tag-dot"></span>
+              Accepting New Creator Applications
+            </div>
+            <h1 class="hero-title">
+              Unlock Your Full <span class="accent">OnlyFans Potential.</span>
+            </h1>
+            <p class="hero-subtitle">
+              We provide comprehensive management, expert chatting, and proven marketing
+              strategies to ensure your sustained growth and success.
+            </p>
+            <div class="hero-actions">
+              <a href="#apply" class="btn-primary">Apply for Partnership</a>
+              <a href="#apply" class="btn-secondary">Book Consultation</a>
+              <a href="#referral" class="btn-ghost">Referral Scheme</a>
+            </div>
+            <div class="hero-badges">
+              <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                Proven Growth
+              </div>
+              <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                Total Privacy
+              </div>
+            </div>
+            <div class="hero-metrics">
+              <div class="hero-metric">
+                <strong>315%</strong>
+                Avg. revenue increase<br />in first 6 months
+              </div>
+              <div class="hero-metric">
+                <strong>98%</strong>
+                Creator retention rate
+              </div>
+              <div class="hero-metric">
+                <strong>24/7</strong>
+                Dedicated support<br />and operations
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ALL-IN-ONE SOLUTION -->
+      <section id="services">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Services</div>
+            <h2 class="section-title">Your All-in-One Solution</h2>
+            <p class="section-subtitle">
+              We provide the infrastructure you need to build an empire.
+            </p>
+          </div>
+
+          <div class="cards-row">
+            <article class="card">
+              <div class="card-icon">📋</div>
+              <h3>Dedicated Management</h3>
+              <p>
+                From strategic content planning to consistent scheduling and
+                pricing optimization, we handle every aspect of your business.
+              </p>
+              <ul class="card-list">
+                <li>Content Strategy &amp; Scheduling</li>
+                <li>Pricing Strategy &amp; PPV</li>
+                <li>Analytics &amp; Reporting</li>
+                <li>24/7 Account Support</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">💬</div>
+              <h3>Expert Chatting</h3>
+              <p>
+                Engage your fanbase around the clock. We build genuine
+                connections, upsell premium content, and maximize tips.
+              </p>
+              <ul class="card-list">
+                <li>24/7 Fan Engagement</li>
+                <li>Upselling &amp; PPV Promotion</li>
+                <li>Gift &amp; Tip Maximization</li>
+                <li>Native English Speakers</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">🛡️</div>
+              <h3>Privacy &amp; Infrastructure</h3>
+              <p>
+                We protect your identity and personal life so you can work safely
+                and receive gifts without exposure.
+              </p>
+              <ul class="card-list">
+                <li>Registered Postal Address</li>
+                <li>Privacy Shield Protocols</li>
+                <li>Data &amp; Content Protection</li>
+                <li>Secure Gift Receiving</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESULTS -->
+      <section id="results">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Results</div>
+            <h2 class="section-title">Real Results, Real Growth</h2>
+            <p class="section-subtitle">
+              Join the top 0.1% of creators who trust Aventus.
+            </p>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat-pill">
+              <strong>315%</strong>
+              <span>Avg. Revenue Increase<br />In first 6 months</span>
+            </div>
+            <div class="stat-pill">
+              <strong>98%</strong>
+              <span>Client Retention Rate<br />Long-term partnerships</span>
+            </div>
+            <div class="stat-pill">
+              <strong>24/7</strong>
+              <span>Support &amp; Operations<br />We never sleep</span>
+            </div>
+          </div>
+
+          <div class="charts-row">
+            <div class="chart-card">
+              <div class="chart-header">
+                <div class="chart-title">Average Revenue Growth</div>
+                <div>Mo 1 – Mo 6</div>
+              </div>
+              <div class="chart-visual">
+                <div class="chart-line"></div>
+              </div>
+            </div>
+
+            <div class="chart-card">
+              <div class="chart-header">
+                <div class="chart-title">Average Creator Revenue Growth</div>
+                <div>Typical month-by-month increase</div>
+              </div>
+              <div class="chart-visual">
+                <div class="chart-bars">
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PARTNER WITH AVENTUS (CREATORS) -->
+      <section id="partners">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Partner With Aventus</h2>
+            <p class="section-subtitle">
+              Join a high-performance agency built on integrity, transparency,
+              and creator success.
+            </p>
+          </div>
+
+          <div class="partner-benefits">
+            <article class="partner-card">
+              <h3>Premium Payouts</h3>
+              <p>
+                Earn more with structured funnels, upselling, and refined
+                pricing systems.
+              </p>
+            </article>
+            <article class="partner-card">
+              <h3>Full Transparency</h3>
+              <p>
+                Track your numbers, growth, and revenue with clear, honest
+                reporting.
+              </p>
+            </article>
+            <article class="partner-card">
+              <h3>Long-Term Growth</h3>
+              <p>
+                Our focus isn’t quick wins — it’s consistent, compounding
+                success.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESS -->
+      <section id="process" class="process-band">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Your Path to Success</h2>
+            <p class="section-subtitle">
+              A simple, proven framework that takes creators from uncertainty to
+              predictable income.
+            </p>
+          </div>
+
+          <div class="process-steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-title">Apply for Partnership</div>
+              Share your profile and goals — we assess whether you’re a good fit
+              for our program.
+              <div class="step-line"></div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-title">Strategy Call</div>
+              We build a custom plan to optimize your content, audience, and
+              revenue streams.
+              <div class="step-line"></div>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-title">Onboarding &amp; Setup</div>
+              Our specialists set up your systems, security, pricing, funnels,
+              and structure.
+              <div class="step-line"></div>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-title">Full-Scale Management</div>
+              Chatting, promotion, retention, analytics — handled by our expert
+              team.
+              <div class="step-line"></div>
+            </div>
+            <div class="step">
+              <div class="step-number">5</div>
+              <div class="step-title">Grow &amp; Earn</div>
+              Focus on creating. We take care of everything else while results
+              compound.
+              <div class="step-line"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section id="testimonials">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">What Our Creators Say</h2>
+            <p class="section-subtitle">
+              Real feedback from creators who trusted Aventus to scale their
+              business.
+            </p>
+          </div>
+
+          <div class="testimonials-row">
+            <article class="testimonial-card">
+              "Aventus completely changed my business. I went from inconsistent
+              earnings to stable, predictable growth every month."
+              <div class="testimonial-author">— Sophia</div>
+            </article>
+
+            <article class="testimonial-card">
+              "I finally got my life back. No more 12-hour chat shifts. Their
+              team handles everything and I can just create."
+              <div class="testimonial-author">— Maya</div>
+            </article>
+
+            <article class="testimonial-card">
+              "Their marketing and upselling systems are elite. I earn more now
+              with LESS stress."
+              <div class="testimonial-author">— Ava</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- APPLY / CTA -->
+      <section id="apply">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Ready to Start Your Growth Journey?</h2>
+            <p class="section-subtitle">
+              Apply now, book a consultation, or reach out via WhatsApp.
+            </p>
+          </div>
+
+          <div class="cta-grid">
+            <div class="cta-card">
+              <h3>Apply for Partnership</h3>
+              <p>Share basic details and we’ll review your application.</p>
+              <div class="field-group">
+                <label class="field-label" for="name">Name</label>
+                <input
+                  id="name"
+                  type="text"
+                  class="field-input"
+                  placeholder="Your Name"
+                />
+                <label class="field-label" for="handle">OnlyFans Handle</label>
+                <input
+                  id="handle"
+                  type="text"
+                  class="field-input"
+                  placeholder="@username"
+                />
+                <label class="field-label" for="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  class="field-input"
+                  placeholder="you@example.com"
+                />
+              </div>
+              <button class="btn-primary" type="button">
+                Submit Application
+              </button>
+            </div>
+
+            <div class="cta-card">
+              <h3>Book a Consultation</h3>
+              <p>
+                Speak with our management team and discover how we can scale
+                your business.
+              </p>
+              <button class="btn-secondary" type="button">
+                Email Us
+              </button>
+            </div>
+
+            <div class="cta-card">
+              <h3>WhatsApp Chat</h3>
+              <p>
+                Instant replies. Ask questions, learn more, or begin onboarding.
+              </p>
+              <button class="btn-primary" type="button">Start Chat</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REFERRAL PARTNER -->
+      <section id="referral" class="referral-band">
+        <div class="container">
+          <div class="section-header">
+            <div class="referral-tag">Referral Partner Program</div>
+            <h2 class="section-title">Partner with Aventus</h2>
+            <p class="section-subtitle">
+              Aventus is the top-paying referral partner in the OnlyFans arena —
+              backed by our real payout data. We don’t race to the bottom; we
+              reward the people who drive growth.
+            </p>
+          </div>
+
+          <div class="referral-row">
+            <div>
+              <p class="section-subtitle" style="max-width: 680px">
+                If you know creators who are serious about earnings, send them
+                to Aventus and get paid at a level that matches the value you
+                deliver. Straightforward process. Premium payouts. A team that
+                moves quickly and treats referrals like partners.
+              </p>
+
+              <div class="referral-actions">
+                <a href="#apply" class="btn-primary">Join Referral Program</a>
+                <a href="#apply" class="btn-secondary">Book Partner Call</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="referral-benefits">
+            <div class="referral-benefit">
+              <div class="referral-benefit-number">1</div>
+              <h4>Premium Payouts</h4>
+              Competitive commission structures that beat industry standards.
+            </div>
+            <div class="referral-benefit">
+              <div class="referral-benefit-number">2</div>
+              <h4>Transparent Tracking</h4>
+              Clear reporting on your referrals’ performance and your earnings.
+            </div>
+            <div class="referral-benefit">
+              <div class="referral-benefit-number">3</div>
+              <h4>Long-term Value</h4>
+              Our retention rate means your passive income stream lasts longer.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-row">
+        <div>© Aventus Digital Media. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#top">Back to top</a>
+          <a href="#disclaimer">Disclaimer</a>
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#terms">Terms</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
