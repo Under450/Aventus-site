@@ -80,8 +80,8 @@
     }
 
     .logo-img {
-      height: 48px; /* bigger logo */
-      width: auto;
+      width: 225px;
+      height: auto;
       display: block;
     }
 
@@ -582,16 +582,8 @@
     /* Partner with Aventus */
 
     .partner-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 2rem;
-      margin-top: 1.8rem;
-    }
-
-    @media (max-width: 900px) {
-      .partner-layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      max-width: 960px;
+      margin: 1.8rem auto 0;
     }
 
     .partner-benefits {
@@ -627,12 +619,12 @@
       line-height: 1.6;
     }
 
-    /* NEW: orange numbers for the three partnership points */
+    /* orange numbers for partnership points */
     .partner-number {
       width: 26px;
       height: 26px;
       border-radius: 999px;
-      background: #ff7f2d; /* orange */
+      background: #ff7f2d;
       color: #fff;
       display: flex;
       align-items: center;
@@ -660,8 +652,13 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.9rem;
-      margin-top: 1.5rem;
-      justify-content: center; /* centre the two buttons */
+      margin-top: 1.2rem;
+      justify-content: center;
+    }
+
+    .referral-block {
+      text-align: center;
+      margin-top: 2.2rem;
     }
 
     /* FAQ */
@@ -1204,6 +1201,7 @@
       <section id="process" class="process-band">
         <div class="container">
           <div class="section-header">
+            <div class="section-kicker">Process</div>
             <h2 class="section-title">Your Path to Success</h2>
             <p class="section-subtitle">
               A simple, proven framework that takes creators from uncertainty to
@@ -1251,7 +1249,7 @@
         </div>
       </section>
 
-      <!-- 6. PARTNER WITH AVENTUS (CREATORS + REFERRAL) -->
+      <!-- 6. PARTNER WITH AVENTUS (CREATORS + REFERRAL BELOW BOXES) -->
       <section id="partners">
         <div class="container">
           <div class="section-header">
@@ -1262,42 +1260,40 @@
           </div>
 
           <div class="partner-layout">
-            <!-- Creator partnership -->
-            <div>
-              <h3 style="margin:0 0 0.6rem;font-size:1.15rem;">Creator Management Partnership</h3>
-              <p class="section-subtitle" style="margin:0 0 0.4rem;max-width:none;">
-                Join a high-performance agency focused on integrity, transparency, and creator success.
-              </p>
-              <div class="partner-benefits">
-                <article class="partner-card">
-                  <div class="partner-number">1</div>
-                  <h3>Premium Payouts</h3>
-                  <p>
-                    Earn more with structured funnels, upselling, and refined
-                    pricing systems.
-                  </p>
-                </article>
-                <article class="partner-card">
-                  <div class="partner-number">2</div>
-                  <h3>Full Transparency</h3>
-                  <p>
-                    Track your numbers, growth, and revenue with clear, honest
-                    reporting.
-                  </p>
-                </article>
-                <article class="partner-card">
-                  <div class="partner-number">3</div>
-                  <h3>Long-Term Growth</h3>
-                  <p>
-                    Our focus isn’t quick wins — it’s consistent, compounding
-                    success.
-                  </p>
-                </article>
-              </div>
+            <h3 style="margin:0 0 0.6rem;font-size:1.15rem;">Creator Management Partnership</h3>
+            <p class="section-subtitle" style="margin:0 0 0.4rem;max-width:none;">
+              Join a high-performance agency focused on integrity, transparency, and creator success.
+            </p>
+
+            <div class="partner-benefits">
+              <article class="partner-card">
+                <div class="partner-number">1</div>
+                <h3>Premium Payouts</h3>
+                <p>
+                  Earn more with structured funnels, upselling, and refined
+                  pricing systems.
+                </p>
+              </article>
+              <article class="partner-card">
+                <div class="partner-number">2</div>
+                <h3>Full Transparency</h3>
+                <p>
+                  Track your numbers, growth, and revenue with clear, honest
+                  reporting.
+                </p>
+              </article>
+              <article class="partner-card">
+                <div class="partner-number">3</div>
+                <h3>Long-Term Growth</h3>
+                <p>
+                  Our focus isn’t quick wins — it’s consistent, compounding
+                  success.
+                </p>
+              </article>
             </div>
 
-            <!-- Referral partnership (cleaned) -->
-            <div style="text-align:center;">
+            <!-- Referral Partner Program under the three boxes -->
+            <div class="referral-block">
               <div class="referral-tag">Referral Partner Program</div>
               <p class="section-subtitle" style="max-width:none;margin-bottom:0.3rem;">
                 Know serious earners? Refer them to Aventus and get paid at a level that matches the value you deliver.
