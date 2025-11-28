@@ -63,7 +63,7 @@
       );
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(31, 41, 51, 0.7);
-      height: 60px; /* fixed, smaller bar */
+      height: 60px; /* fixed bar height */
     }
 
     .navbar-inner {
@@ -81,7 +81,7 @@
     }
 
     .logo-img {
-      max-height: 40px;  /* clamp logo inside bar */
+      max-height: 48px;  /* bigger logo but still inside 60px bar */
       width: auto;
       display: block;
     }
@@ -152,6 +152,7 @@
       justify-items: center;
     }
 
+    /* GLOWING TAG */
     .hero-tag {
       display: inline-flex;
       align-items: center;
@@ -163,6 +164,19 @@
       font-size: 0.8rem;
       color: var(--muted);
       margin-bottom: 1.5rem;
+      box-shadow: 0 0 0 0 rgba(255, 59, 45, 0);
+      animation: heroGlow 3.2s ease-in-out infinite;
+    }
+
+    @keyframes heroGlow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 59, 45, 0);
+        border-color: rgba(148, 163, 184, 0.6);
+      }
+      50% {
+        box-shadow: 0 0 18px 4px rgba(255, 59, 45, 0.55);
+        border-color: rgba(255, 59, 45, 0.95);
+      }
     }
 
     .hero-tag-dot {
