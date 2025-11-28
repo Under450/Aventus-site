@@ -70,7 +70,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.45rem 1.5rem;
+      padding: 0.35rem 1.5rem; /* reduced height */
     }
 
     .logo {
@@ -80,7 +80,7 @@
     }
 
     .logo-img {
-      height: 225px;
+      height: 48px; /* bigger logo */
       width: auto;
       display: block;
     }
@@ -627,6 +627,22 @@
       line-height: 1.6;
     }
 
+    /* NEW: orange numbers for the three partnership points */
+    .partner-number {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: #ff7f2d; /* orange */
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 10px 20px rgba(255, 127, 45, 0.5);
+    }
+
     .referral-tag {
       display: inline-flex;
       align-items: center;
@@ -640,48 +656,12 @@
       margin-bottom: 0.9rem;
     }
 
-    .referral-benefits {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 1rem;
-      margin-top: 1.1rem;
-    }
-
-    .referral-benefit {
-      background: radial-gradient(circle at top left, #111827, #020617);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 0.9rem 1.1rem 0.8rem;
-      box-shadow: var(--shadow-soft);
-      font-size: 0.86rem;
-      color: var(--muted);
-      line-height: 1.6;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-    }
-
-    .referral-benefit-number {
-      width: 24px;
-      height: 24px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 0.8rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
     .referral-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 0.9rem;
-      margin-top: 1.3rem;
-      justify-content: center;
+      margin-top: 1.5rem;
+      justify-content: center; /* centre the two buttons */
     }
 
     /* FAQ */
@@ -801,16 +781,9 @@
       width: 100%;
     }
 
-    /* Legal/info sections */
-
-    .legal-section {
-      background: radial-gradient(circle at top, #020617, #050814);
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
-    }
+    /* Legal/info content (used inside modals) */
 
     .legal-content {
-      max-width: 760px;
-      margin: 0 auto;
       font-size: 0.88rem;
       color: var(--muted);
       line-height: 1.7;
@@ -834,6 +807,55 @@
 
     .legal-content li {
       margin-bottom: 0.4rem;
+    }
+
+    /* MODALS */
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 80;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-inner {
+      position: relative;
+      max-width: 760px;
+      width: 90%;
+      max-height: 80vh;
+      overflow: auto;
+      background: radial-gradient(circle at top, #111827, #020617);
+      border-radius: 22px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      box-shadow: var(--shadow-soft);
+      padding: 1.8rem 1.9rem 1.6rem;
+    }
+
+    .modal-title {
+      margin: 0 0 0.4rem;
+      font-size: 1.3rem;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 0.9rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      color: #9ca3af;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: var(--accent);
     }
 
     /* Footer */
@@ -875,7 +897,6 @@
     <header class="navbar">
       <div class="container navbar-inner">
         <a href="#top" class="logo">
-          <!-- Save your actual logo as aventus-logo.png in the same folder -->
           <img src="aventus-logo.png" alt="Aventus Digital Media" class="logo-img" />
         </a>
         <nav class="nav-links">
@@ -1249,6 +1270,7 @@
               </p>
               <div class="partner-benefits">
                 <article class="partner-card">
+                  <div class="partner-number">1</div>
                   <h3>Premium Payouts</h3>
                   <p>
                     Earn more with structured funnels, upselling, and refined
@@ -1256,6 +1278,7 @@
                   </p>
                 </article>
                 <article class="partner-card">
+                  <div class="partner-number">2</div>
                   <h3>Full Transparency</h3>
                   <p>
                     Track your numbers, growth, and revenue with clear, honest
@@ -1263,6 +1286,7 @@
                   </p>
                 </article>
                 <article class="partner-card">
+                  <div class="partner-number">3</div>
                   <h3>Long-Term Growth</h3>
                   <p>
                     Our focus isn’t quick wins — it’s consistent, compounding
@@ -1272,32 +1296,12 @@
               </div>
             </div>
 
-            <!-- Referral partnership -->
-            <div>
+            <!-- Referral partnership (cleaned) -->
+            <div style="text-align:center;">
               <div class="referral-tag">Referral Partner Program</div>
               <p class="section-subtitle" style="max-width:none;margin-bottom:0.3rem;">
                 Know serious earners? Refer them to Aventus and get paid at a level that matches the value you deliver.
               </p>
-              <div class="referral-benefits">
-                <div class="referral-benefit">
-                  <div class="referral-benefit-number">1</div>
-                  <div>
-                    Competitive commission structures that beat industry standards.
-                  </div>
-                </div>
-                <div class="referral-benefit">
-                  <div class="referral-benefit-number">2</div>
-                  <div>
-                    Clear reporting on your referrals’ performance and your earnings.
-                  </div>
-                </div>
-                <div class="referral-benefit">
-                  <div class="referral-benefit-number">3</div>
-                  <div>
-                    High retention means your passive income stream lasts longer.
-                  </div>
-                </div>
-              </div>
               <div class="referral-actions">
                 <a href="#apply" class="btn-primary">Join Referral Program</a>
                 <a href="#apply" class="btn-secondary">Book Partner Call</a>
@@ -1416,114 +1420,6 @@
           </div>
         </div>
       </section>
-
-      <!-- COMPANY INFO -->
-      <section id="company" class="legal-section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Company Information</h2>
-          </div>
-          <div class="legal-content">
-            <p>
-              Aventus Digital Media is a specialist creator management and digital marketing agency.
-              All services are provided under written agreement and subject to our terms and conditions.
-            </p>
-            <h3>General Information</h3>
-            <p>
-              This website is for information purposes only and does not constitute legal, financial,
-              or tax advice. Any figures shown are illustrative only and do not guarantee future results.
-            </p>
-            <ul>
-              <li>Trading Name: Aventus Digital Media</li>
-              <li>Business Type: Digital media &amp; creator management services</li>
-              <li>Jurisdiction: United Kingdom (service focus)</li>
-              <li>Contact: please use the consultation or WhatsApp options above.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- DISCLAIMER -->
-      <section id="disclaimer" class="legal-section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Disclaimer</h2>
-          </div>
-          <div class="legal-content">
-            <p>
-              The content on this website is provided for general information only. While we aim to keep
-              information accurate and up to date, we do not make any representations or warranties of any kind,
-              express or implied, about the completeness, accuracy, reliability, suitability, or availability of
-              the website or the information, products, or services contained on it.
-            </p>
-            <p>
-              Any reliance you place on such information is strictly at your own risk. Past performance statistics,
-              case studies, and examples are illustrative and do not guarantee future performance.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- PRIVACY POLICY -->
-      <section id="privacy" class="legal-section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Privacy Policy</h2>
-          </div>
-          <div class="legal-content">
-            <p>
-              We respect your privacy and are committed to protecting any personal information you share with us.
-              This summary explains how we may collect and use information when you contact us or apply to work with us.
-            </p>
-            <h3>Information We May Collect</h3>
-            <ul>
-              <li>Basic contact details (name, email address, social media handles).</li>
-              <li>Information you provide in forms or during consultations.</li>
-              <li>Technical information about how you use this website (analytics, cookies).</li>
-            </ul>
-            <h3>How We Use Information</h3>
-            <ul>
-              <li>To review partnership applications and respond to enquiries.</li>
-              <li>To provide and improve our services.</li>
-              <li>To comply with applicable legal and regulatory obligations.</li>
-            </ul>
-            <p>
-              We will not sell your personal data to third parties. Limited sharing may occur with trusted service
-              providers where necessary to operate our business (for example, secure communication tools or analytics).
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- TERMS & CONDITIONS -->
-      <section id="terms" class="legal-section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Terms &amp; Conditions</h2>
-          </div>
-          <div class="legal-content">
-            <p>
-              By using this website, you agree to do so for lawful purposes only and in a way that does not infringe
-              the rights of, restrict, or inhibit the use and enjoyment of this site by any other person.
-            </p>
-            <h3>Use of the Website</h3>
-            <ul>
-              <li>
-                Content is provided “as is” without any guarantees, conditions, or warranties as to its accuracy.
-              </li>
-              <li>
-                We reserve the right to update, change, or remove any part of the site at any time
-                without prior notice.
-              </li>
-            </ul>
-            <h3>Engaging Our Services</h3>
-            <p>
-              Any engagement of Aventus Digital Media services will be governed by a separate written agreement
-              setting out the specific scope of work, fees, responsibilities, and data protection arrangements.
-            </p>
-          </div>
-        </div>
-      </section>
     </main>
 
     <!-- FOOTER -->
@@ -1532,13 +1428,146 @@
         <div>© Aventus Digital Media. All rights reserved.</div>
         <div class="footer-links">
           <a href="#top">Back to top</a>
-          <a href="#company">Company Info</a>
-          <a href="#disclaimer">Disclaimer</a>
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#terms">Terms &amp; Conditions</a>
+          <a href="#" data-modal="company">Company Info</a>
+          <a href="#" data-modal="disclaimer">Disclaimer</a>
+          <a href="#" data-modal="privacy">Privacy Policy</a>
+          <a href="#" data-modal="terms">Terms &amp; Conditions</a>
         </div>
       </div>
     </footer>
   </div>
+
+  <!-- MODALS -->
+
+  <!-- Company Info -->
+  <div class="modal-overlay" id="modal-company">
+    <div class="modal-inner">
+      <button class="modal-close" type="button" aria-label="Close">&times;</button>
+      <h2 class="modal-title">Company Information</h2>
+      <div class="legal-content">
+        <p>
+          Aventus Digital Media is a specialist creator management and digital marketing agency.
+          All services are provided under written agreement and subject to our terms and conditions.
+        </p>
+        <h3>General Information</h3>
+        <p>
+          This website is for information purposes only and does not constitute legal, financial,
+          or tax advice. Any figures shown are illustrative only and do not guarantee future results.
+        </p>
+        <ul>
+          <li>Trading Name: Aventus Digital Media</li>
+          <li>Business Type: Digital media &amp; creator management services</li>
+          <li>Jurisdiction: United Kingdom (service focus)</li>
+          <li>Contact: please use the consultation or WhatsApp options on this site.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="modal-overlay" id="modal-disclaimer">
+    <div class="modal-inner">
+      <button class="modal-close" type="button" aria-label="Close">&times;</button>
+      <h2 class="modal-title">Disclaimer</h2>
+      <div class="legal-content">
+        <p>
+          The content on this website is provided for general information only. While we aim to keep
+          information accurate and up to date, we do not make any representations or warranties of any kind,
+          express or implied, about the completeness, accuracy, reliability, suitability, or availability of
+          the website or the information, products, or services contained on it.
+        </p>
+        <p>
+          Any reliance you place on such information is strictly at your own risk. Past performance statistics,
+          case studies, and examples are illustrative and do not guarantee future performance.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy Policy -->
+  <div class="modal-overlay" id="modal-privacy">
+    <div class="modal-inner">
+      <button class="modal-close" type="button" aria-label="Close">&times;</button>
+      <h2 class="modal-title">Privacy Policy</h2>
+      <div class="legal-content">
+        <p>
+          We respect your privacy and are committed to protecting any personal information you share with us.
+          This summary explains how we may collect and use information when you contact us or apply to work with us.
+        </p>
+        <h3>Information We May Collect</h3>
+        <ul>
+          <li>Basic contact details (name, email address, social media handles).</li>
+          <li>Information you provide in forms or during consultations.</li>
+          <li>Technical information about how you use this website (analytics, cookies).</li>
+        </ul>
+        <h3>How We Use Information</h3>
+        <ul>
+          <li>To review partnership applications and respond to enquiries.</li>
+          <li>To provide and improve our services.</li>
+          <li>To comply with applicable legal and regulatory obligations.</li>
+        </ul>
+        <p>
+          We will not sell your personal data to third parties. Limited sharing may occur with trusted service
+          providers where necessary to operate our business (for example, secure communication tools or analytics).
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terms & Conditions -->
+  <div class="modal-overlay" id="modal-terms">
+    <div class="modal-inner">
+      <button class="modal-close" type="button" aria-label="Close">&times;</button>
+      <h2 class="modal-title">Terms &amp; Conditions</h2>
+      <div class="legal-content">
+        <p>
+          By using this website, you agree to do so for lawful purposes only and in a way that does not infringe
+          the rights of, restrict, or inhibit the use and enjoyment of this site by any other person.
+        </p>
+        <h3>Use of the Website</h3>
+        <ul>
+          <li>
+            Content is provided “as is” without any guarantees, conditions, or warranties as to its accuracy.
+          </li>
+          <li>
+            We reserve the right to update, change, or remove any part of the site at any time
+            without prior notice.
+          </li>
+        </ul>
+        <h3>Engaging Our Services</h3>
+        <p>
+          Any engagement of Aventus Digital Media services will be governed by a separate written agreement
+          setting out the specific scope of work, fees, responsibilities, and data protection arrangements.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const links = document.querySelectorAll('[data-modal]');
+      const overlays = document.querySelectorAll('.modal-overlay');
+
+      links.forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const id = this.getAttribute('data-modal');
+          const overlay = document.querySelector('#modal-' + id);
+          if (overlay) {
+            overlay.classList.add('open');
+          }
+        });
+      });
+
+      overlays.forEach(overlay => {
+        overlay.addEventListener('click', function (e) {
+          if (e.target === overlay || e.target.closest('.modal-close')) {
+            overlay.classList.remove('open');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
