@@ -6,7 +6,6 @@
   <title>Aventus Digital Media</title>
   <style>
     :root {
-      /* Replace these with your exact brand colors */
       --bg: #050814;
       --bg-alt: #0b1020;
       --card: #101727;
@@ -77,42 +76,13 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.55rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      font-size: 0.85rem;
-      text-transform: uppercase;
+      gap: 0.5rem;
     }
 
-    .logo-mark {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      border: 2px solid var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .logo-mark::before,
-    .logo-mark::after {
-      content: "";
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      border-radius: 999px;
-      background: var(--accent);
-    }
-
-    .logo-mark::before {
-      top: 3px;
-      left: 3px;
-    }
-
-    .logo-mark::after {
-      bottom: 3px;
-      right: 3px;
+    .logo-img {
+      height: 34px;
+      width: auto;
+      display: block;
     }
 
     .nav-links {
@@ -177,6 +147,8 @@
     .hero-inner {
       display: grid;
       gap: 2.5rem;
+      text-align: center;
+      justify-items: center;
     }
 
     .hero-tag {
@@ -218,6 +190,8 @@
       font-size: 0.98rem;
       line-height: 1.6;
       margin-bottom: 2rem;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .hero-badges {
@@ -227,6 +201,7 @@
       margin-bottom: 2.25rem;
       font-size: 0.9rem;
       color: var(--muted);
+      justify-content: center;
     }
 
     .hero-badge {
@@ -247,7 +222,30 @@
       flex-wrap: wrap;
       gap: 1rem;
       margin-bottom: 2.5rem;
+      justify-content: center;
     }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      justify-content: center;
+    }
+
+    .hero-metric {
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .hero-metric strong {
+      display: block;
+      font-size: 1.35rem;
+      color: #fefefe;
+    }
+
+    /* Buttons */
 
     .btn-primary,
     .btn-secondary,
@@ -302,24 +300,6 @@
       background: rgba(248, 250, 252, 0.02);
     }
 
-    .hero-metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .hero-metric {
-      min-width: 120px;
-    }
-
-    .hero-metric strong {
-      display: block;
-      font-size: 1.35rem;
-      color: #fefefe;
-    }
-
     /* Section generic */
 
     section {
@@ -353,7 +333,7 @@
       line-height: 1.7;
     }
 
-    /* Overview (Are You Maximizing) */
+    /* Overview */
 
     .overview-secondary {
       margin-top: 0.9rem;
@@ -501,62 +481,35 @@
     }
 
     .chart-visual {
-      height: 150px;
-      border-radius: 12px;
-      background: radial-gradient(
-        circle at top,
-        rgba(248, 113, 113, 0.35),
-        rgba(15, 23, 42, 0.2)
-      );
-      position: relative;
-      overflow: hidden;
+      height: 170px;
     }
 
-    .chart-line {
-      position: absolute;
-      left: 8%;
-      right: 4%;
-      top: 18%;
-      bottom: 12%;
-      border-radius: 8px;
-      background: linear-gradient(to top right, rgba(127, 29, 29, 0.2), transparent);
-      border-bottom: 2px solid rgba(248, 113, 113, 0.95);
-    }
-
-    .chart-bars {
-      position: absolute;
-      left: 8%;
-      right: 8%;
-      bottom: 10%;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 0.3rem;
-    }
-
-    .chart-bar {
-      flex: 1;
-      border-radius: 6px 6px 0 0;
-      background: linear-gradient(to top, rgba(248, 113, 113, 0.95), transparent);
-    }
-
-    .chart-bar:nth-child(1) {
-      height: 30%;
-    }
-    .chart-bar:nth-child(2) {
-      height: 45%;
-    }
-    .chart-bar:nth-child(3) {
-      height: 58%;
-    }
-    .chart-bar:nth-child(4) {
-      height: 75%;
-    }
-    .chart-bar:nth-child(5) {
-      height: 87%;
-    }
-    .chart-bar:nth-child(6) {
+    .chart-svg {
+      width: 100%;
       height: 100%;
+    }
+
+    .chart-axis-label {
+      font-size: 10px;
+      fill: #9ca3af;
+    }
+
+    .chart-line-path {
+      fill: url(#lineGradient);
+      stroke: #f97373;
+      stroke-width: 3;
+      stroke-linejoin: round;
+    }
+
+    .chart-bar-label {
+      font-size: 10px;
+      fill: #9ca3af;
+    }
+
+    .chart-bar-value {
+      font-size: 10px;
+      fill: #f9fafb;
+      font-weight: 600;
     }
 
     /* Process timeline */
@@ -698,11 +651,14 @@
       background: radial-gradient(circle at top left, #111827, #020617);
       border-radius: var(--radius-lg);
       border: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 1rem 1.2rem 0.9rem;
+      padding: 0.9rem 1.1rem 0.8rem;
       box-shadow: var(--shadow-soft);
       font-size: 0.86rem;
       color: var(--muted);
       line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
     }
 
     .referral-benefit-number {
@@ -716,13 +672,8 @@
       justify-content: center;
       font-weight: 600;
       font-size: 0.8rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .referral-benefit h4 {
-      margin: 0 0 0.2rem;
-      font-size: 0.95rem;
-      color: #e5e7eb;
+      flex-shrink: 0;
+      margin-top: 2px;
     }
 
     .referral-actions {
@@ -730,6 +681,7 @@
       flex-wrap: wrap;
       gap: 0.9rem;
       margin-top: 1.3rem;
+      justify-content: center;
     }
 
     /* FAQ */
@@ -849,6 +801,41 @@
       width: 100%;
     }
 
+    /* Legal/info sections */
+
+    .legal-section {
+      background: radial-gradient(circle at top, #020617, #050814);
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .legal-content {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .legal-content h3 {
+      font-size: 1.05rem;
+      color: #e5e7eb;
+      margin-top: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .legal-content p {
+      margin: 0 0 0.8rem;
+    }
+
+    .legal-content ul {
+      margin: 0 0 0.8rem 1.2rem;
+      padding: 0;
+    }
+
+    .legal-content li {
+      margin-bottom: 0.4rem;
+    }
+
     /* Footer */
 
     footer {
@@ -888,8 +875,8 @@
     <header class="navbar">
       <div class="container navbar-inner">
         <a href="#top" class="logo">
-          <span class="logo-mark"></span>
-          <span>AVENTUS<br />DIGITAL&nbsp;MEDIA</span>
+          <!-- Save your actual logo as aventus-logo.png in the same folder -->
+          <img src="aventus-logo.png" alt="Aventus Digital Media" class="logo-img" />
         </a>
         <nav class="nav-links">
           <a href="#services">Services</a>
@@ -1090,30 +1077,102 @@
           </div>
 
           <div class="charts-row">
+            <!-- Line chart -->
             <div class="chart-card">
               <div class="chart-header">
                 <div class="chart-title">Average Revenue Growth</div>
-                <div>Mo 1 – Mo 6</div>
+                <div>Months 1 – 6</div>
               </div>
               <div class="chart-visual">
-                <div class="chart-line"></div>
+                <svg viewBox="0 0 400 180" class="chart-svg">
+                  <defs>
+                    <linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#f97373" stop-opacity="0.55" />
+                      <stop offset="100%" stop-color="#111827" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Axes -->
+                  <line x1="40" y1="20" x2="40" y2="150" stroke="#374151" stroke-width="1" />
+                  <line x1="40" y1="150" x2="380" y2="150" stroke="#374151" stroke-width="1" />
+
+                  <!-- Y labels -->
+                  <text x="10" y="150" class="chart-axis-label">£0</text>
+                  <text x="10" y="120" class="chart-axis-label">£3k</text>
+                  <text x="10" y="90" class="chart-axis-label">£6k</text>
+                  <text x="10" y="60" class="chart-axis-label">£9k</text>
+                  <text x="4" y="30" class="chart-axis-label">£12k</text>
+
+                  <!-- Line + area -->
+                  <path
+                    d="M40 140
+                       L90 125
+                       L140 105
+                       L190 80
+                       L240 60
+                       L290 45
+                       L340 35
+                       L380 30
+                       L380 150
+                       L40 150 Z"
+                    class="chart-line-path"
+                  />
+
+                  <!-- X labels -->
+                  <text x="60" y="165" class="chart-axis-label">Mo 1</text>
+                  <text x="120" y="165" class="chart-axis-label">Mo 2</text>
+                  <text x="180" y="165" class="chart-axis-label">Mo 3</text>
+                  <text x="240" y="165" class="chart-axis-label">Mo 4</text>
+                  <text x="300" y="165" class="chart-axis-label">Mo 5</text>
+                  <text x="360" y="165" class="chart-axis-label">Mo 6</text>
+                </svg>
               </div>
             </div>
 
+            <!-- Bar chart -->
             <div class="chart-card">
               <div class="chart-header">
                 <div class="chart-title">Average Creator Revenue Growth</div>
-                <div>Typical month-by-month increase</div>
+                <div>Based on typical management results</div>
               </div>
               <div class="chart-visual">
-                <div class="chart-bars">
-                  <div class="chart-bar"></div>
-                  <div class="chart-bar"></div>
-                  <div class="chart-bar"></div>
-                  <div class="chart-bar"></div>
-                  <div class="chart-bar"></div>
-                  <div class="chart-bar"></div>
-                </div>
+                <svg viewBox="0 0 400 180" class="chart-svg">
+                  <!-- Axes -->
+                  <line x1="40" y1="20" x2="40" y2="150" stroke="#374151" stroke-width="1" />
+                  <line x1="40" y1="150" x2="380" y2="150" stroke="#374151" stroke-width="1" />
+
+                  <!-- Bars -->
+                  <g>
+                    <rect x="55" y="120" width="30" height="30" fill="#f97373" />
+                    <text x="70" y="115" text-anchor="middle" class="chart-bar-value">£2k</text>
+                    <text x="70" y="165" text-anchor="middle" class="chart-bar-label">Month 1</text>
+                  </g>
+                  <g>
+                    <rect x="110" y="105" width="30" height="45" fill="#fb5a5a" />
+                    <text x="125" y="100" text-anchor="middle" class="chart-bar-value">£3.5k</text>
+                    <text x="125" y="165" text-anchor="middle" class="chart-bar-label">Month 2</text>
+                  </g>
+                  <g>
+                    <rect x="165" y="90" width="30" height="60" fill="#f94848" />
+                    <text x="180" y="85" text-anchor="middle" class="chart-bar-value">£5.5k</text>
+                    <text x="180" y="165" text-anchor="middle" class="chart-bar-label">Month 3</text>
+                  </g>
+                  <g>
+                    <rect x="220" y="70" width="30" height="80" fill="#f63c3c" />
+                    <text x="235" y="65" text-anchor="middle" class="chart-bar-value">£7.5k</text>
+                    <text x="235" y="165" text-anchor="middle" class="chart-bar-label">Month 4</text>
+                  </g>
+                  <g>
+                    <rect x="275" y="55" width="30" height="95" fill="#f52e2e" />
+                    <text x="290" y="50" text-anchor="middle" class="chart-bar-value">£9k</text>
+                    <text x="290" y="165" text-anchor="middle" class="chart-bar-label">Month 5</text>
+                  </g>
+                  <g>
+                    <rect x="330" y="40" width="30" height="110" fill="#ff3b2d" />
+                    <text x="345" y="35" text-anchor="middle" class="chart-bar-value">£10k+</text>
+                    <text x="345" y="165" text-anchor="middle" class="chart-bar-label">Month 6</text>
+                  </g>
+                </svg>
               </div>
             </div>
           </div>
@@ -1222,18 +1281,21 @@
               <div class="referral-benefits">
                 <div class="referral-benefit">
                   <div class="referral-benefit-number">1</div>
-                  <h4>Premium Payouts</h4>
-                  Competitive commission structures that beat industry standards.
+                  <div>
+                    Competitive commission structures that beat industry standards.
+                  </div>
                 </div>
                 <div class="referral-benefit">
                   <div class="referral-benefit-number">2</div>
-                  <h4>Transparent Tracking</h4>
-                  Clear reporting on your referrals’ performance and your earnings.
+                  <div>
+                    Clear reporting on your referrals’ performance and your earnings.
+                  </div>
                 </div>
                 <div class="referral-benefit">
                   <div class="referral-benefit-number">3</div>
-                  <h4>Long-Term Value</h4>
-                  Our retention rate means your passive income stream lasts longer.
+                  <div>
+                    High retention means your passive income stream lasts longer.
+                  </div>
                 </div>
               </div>
               <div class="referral-actions">
@@ -1354,6 +1416,114 @@
           </div>
         </div>
       </section>
+
+      <!-- COMPANY INFO -->
+      <section id="company" class="legal-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Company Information</h2>
+          </div>
+          <div class="legal-content">
+            <p>
+              Aventus Digital Media is a specialist creator management and digital marketing agency.
+              All services are provided under written agreement and subject to our terms and conditions.
+            </p>
+            <h3>General Information</h3>
+            <p>
+              This website is for information purposes only and does not constitute legal, financial,
+              or tax advice. Any figures shown are illustrative only and do not guarantee future results.
+            </p>
+            <ul>
+              <li>Trading Name: Aventus Digital Media</li>
+              <li>Business Type: Digital media &amp; creator management services</li>
+              <li>Jurisdiction: United Kingdom (service focus)</li>
+              <li>Contact: please use the consultation or WhatsApp options above.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- DISCLAIMER -->
+      <section id="disclaimer" class="legal-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Disclaimer</h2>
+          </div>
+          <div class="legal-content">
+            <p>
+              The content on this website is provided for general information only. While we aim to keep
+              information accurate and up to date, we do not make any representations or warranties of any kind,
+              express or implied, about the completeness, accuracy, reliability, suitability, or availability of
+              the website or the information, products, or services contained on it.
+            </p>
+            <p>
+              Any reliance you place on such information is strictly at your own risk. Past performance statistics,
+              case studies, and examples are illustrative and do not guarantee future performance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRIVACY POLICY -->
+      <section id="privacy" class="legal-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Privacy Policy</h2>
+          </div>
+          <div class="legal-content">
+            <p>
+              We respect your privacy and are committed to protecting any personal information you share with us.
+              This summary explains how we may collect and use information when you contact us or apply to work with us.
+            </p>
+            <h3>Information We May Collect</h3>
+            <ul>
+              <li>Basic contact details (name, email address, social media handles).</li>
+              <li>Information you provide in forms or during consultations.</li>
+              <li>Technical information about how you use this website (analytics, cookies).</li>
+            </ul>
+            <h3>How We Use Information</h3>
+            <ul>
+              <li>To review partnership applications and respond to enquiries.</li>
+              <li>To provide and improve our services.</li>
+              <li>To comply with applicable legal and regulatory obligations.</li>
+            </ul>
+            <p>
+              We will not sell your personal data to third parties. Limited sharing may occur with trusted service
+              providers where necessary to operate our business (for example, secure communication tools or analytics).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TERMS & CONDITIONS -->
+      <section id="terms" class="legal-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Terms &amp; Conditions</h2>
+          </div>
+          <div class="legal-content">
+            <p>
+              By using this website, you agree to do so for lawful purposes only and in a way that does not infringe
+              the rights of, restrict, or inhibit the use and enjoyment of this site by any other person.
+            </p>
+            <h3>Use of the Website</h3>
+            <ul>
+              <li>
+                Content is provided “as is” without any guarantees, conditions, or warranties as to its accuracy.
+              </li>
+              <li>
+                We reserve the right to update, change, or remove any part of the site at any time
+                without prior notice.
+              </li>
+            </ul>
+            <h3>Engaging Our Services</h3>
+            <p>
+              Any engagement of Aventus Digital Media services will be governed by a separate written agreement
+              setting out the specific scope of work, fees, responsibilities, and data protection arrangements.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- FOOTER -->
@@ -1362,9 +1532,10 @@
         <div>© Aventus Digital Media. All rights reserved.</div>
         <div class="footer-links">
           <a href="#top">Back to top</a>
+          <a href="#company">Company Info</a>
           <a href="#disclaimer">Disclaimer</a>
           <a href="#privacy">Privacy Policy</a>
-          <a href="#terms">Terms</a>
+          <a href="#terms">Terms &amp; Conditions</a>
         </div>
       </div>
     </footer>
