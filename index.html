@@ -1378,35 +1378,23 @@
             <p class="section-subtitle">
               Take the next step now — apply for management, book a consultation, or connect with us instantly.
             </p>
-          </div>
-
-          <div class="cta-grid">
-            <div class="cta-card">
-              <h3>Apply for Partnership</h3>
-              <p>Share basic details and we’ll review your application.</p>
-              <div class="field-group">
-                <label class="field-label" for="name">Name</label>
-                <input
-                  id="name"
-                  type="text"
-                  class="field-input"
-                  placeholder="Your Name"
-                />
-                <label class="field-label" for="handle">OnlyFans Handle</label>
-                <input
-                  id="handle"
-                  type="text"
-                  class="field-input"
-                  placeholder="@username"
-                />
-                <label class="field-label" for="email">Email</label>
-               <input id="email" type="email" class="field-input" placeholder="info@aventusconsulting.co.uk" />
-              </div>
-              <button class="btn-primary" type="button">
-                Submit Application
-              </button>
-            </div>
-
+          <form id="applicationForm" onsubmit="sendApplicationEmail(); return false;">
+  <div class="cta-card">
+    <h3>Apply for Partnership</h3>
+    <p>Share basic details and we’ll review your application.</p>
+    <div class="field-group">
+      <label class="field-label" for="name">Name</label>
+      <input id="name" type="text" class="field-input" placeholder="Your Name" required />
+      
+      <label class="field-label" for="handle">OnlyFans Handle</label>
+      <input id="handle" type="text" class="field-input" placeholder="@username" required />
+      
+      <label class="field-label" for="email">Email</label>
+      <input id="email" type="email" class="field-input" placeholder="info@aventusconsulting.co.uk" required />
+    </div>
+    <button class="btn-primary" type="submit">Submit Application</button>
+  </div>
+</form>
             <div class="cta-card">
               <h3>Book a Consultation</h3>
               <p>
