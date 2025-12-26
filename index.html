@@ -633,7 +633,6 @@
       margin: 0;
       font-size: 0.9rem;
       color: var(--muted);
-      line-height: 1.6;
     }
 
     .partner-number {
@@ -1378,21 +1377,25 @@
             <p class="section-subtitle">
               Take the next step now — apply for management, book a consultation, or connect with us instantly.
             </p>
-          <form id="applicationForm" onsubmit="sendApplicationEmail(); return false;">
+          <form id="applicationForm" action="https://formspree.io/f/mzdbzrvq" method="POST">
   <div class="cta-card">
     <h3>Apply for Partnership</h3>
     <p>Share basic details and we’ll review your application.</p>
     <div class="field-group">
       <label class="field-label" for="name">Name</label>
-      <input id="name" type="text" class="field-input" placeholder="Your Name" required />
+      <input id="name" name="name" type="text" class="field-input" placeholder="Your Name" required />
       
       <label class="field-label" for="handle">OnlyFans Handle</label>
-      <input id="handle" type="text" class="field-input" placeholder="@username" required />
+      <input id="handle" name="handle" type="text" class="field-input" placeholder="@username" required />
       
       <label class="field-label" for="email">Email</label>
-      <input id="email" type="email" class="field-input" placeholder="info@aventusconsulting.co.uk" required />
+      <input id="email" name="email" type="email" class="field-input" placeholder="info@aventusconsulting.co.uk" required />
+      
+      <input type="hidden" name="_subject" value="New Partnership Application from website" />
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
     </div>
     <button class="btn-primary" type="submit">Submit Application</button>
+    <p id="form-status" class="section-subtitle" style="margin-top:0.8rem;"></p>
   </div>
 </form>
             <div class="cta-card">
@@ -1561,6 +1564,37 @@
           }
         });
       });
+
+      // Formspree submission (keeps layout intact, shows inline status)
+      const form = document.getElementById('applicationForm');
+      const status = document.getElementById('form-status');
+      if (form) {
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          status.textContent = 'Submitting…';
+          const data = new FormData(form);
+          try {
+            const response = await fetch(form.action, {
+              method: 'POST',
+              body: data,
+              headers: { 'Accept': 'application/json' }
+            });
+            if (response.ok) {
+              status.textContent = 'Thanks — your application has been sent!';
+              form.reset();
+            } else {
+              const resData = await response.json().catch(() => ({}));
+              if (resData && resData.errors) {
+                status.textContent = resData.errors.map(err => err.message).join(', ');
+              } else {
+                status.textContent = 'Oops! There was a problem submitting your form.';
+              }
+            }
+          } catch (err) {
+            status.textContent = 'Network error — please try again later.';
+          }
+        });
+      }
     });
   </script>
 </body>
